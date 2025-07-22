@@ -1,11 +1,13 @@
-import React from "react";
-import { Package, Truck, Shield, Globe, Clock, Target, CheckCircle } from "lucide-react";
+import React from "react"
+import { Package, Truck, Shield, Globe, Clock, Target, CheckCircle } from "lucide-react"
+import Image from "next/image"
+import service from "@/assets/service_bg.png"
 
 interface ServiceProps {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  features: string[];
+  icon: React.ElementType
+  title: string
+  description: string
+  features: string[]
 }
 
 const ServicesSection: React.FC = () => {
@@ -46,25 +48,38 @@ const ServicesSection: React.FC = () => {
       description: "Comprehensive logistics solutions tailored for businesses of all sizes.",
       features: ["API integration", "Bulk pricing", "Dedicated support"],
     },
-  ];
+  ]
 
   return (
-    <section className="min-h-screen flex items-center py-24 px-4" style={{ backgroundColor: "#fde2e2" }}>
-      <div className="max-w-7xl mx-auto">
+    <section className="relative min-h-screen flex items-center py-24 px-4">
+      {/* Background Image - Made smaller and positioned to the extreme right */}
+      <div className="absolute right-0 top-0 w-1/2 h-full overflow-hidden opacity-80">
+        <Image
+          src={service || "/placeholder.svg"}
+          alt="Abstract background image representing logistics services"
+          fill
+          className="object-cover object-right" // Changed to object-cover and object-right
+          priority={false}
+        />
+      </div>
+
+      <div className="relative z-20 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-orange-100 rounded-full text-sm font-medium text-orange-700 mb-4">
             ⚡ Our Services
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Complete Delivery Solutions
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Complete Delivery Solutions</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From same-day delivery to enterprise logistics, we offer comprehensive solutions that scale with your business needs.
+            From same-day delivery to enterprise logistics, we offer comprehensive solutions that scale with your
+            business needs.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-orange-100">
+            <div
+              key={index}
+              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-orange-100"
+            >
               <div className="flex items-center mb-6">
                 <div className="p-3 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl text-white group-hover:scale-110 transition-transform duration-300">
                   {React.createElement(service.icon, { className: "h-6 w-6" })}
@@ -85,7 +100,7 @@ const ServicesSection: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ServicesSection;
+export default ServicesSection

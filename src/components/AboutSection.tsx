@@ -2,21 +2,15 @@
 
 import React from "react";
 import {
-   ArrowRight,
    Truck,
    Users
  } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import aboutImage from "@/assets/about_image.png"; // Or use your uploaded image path
+import aboutImage from "@/assets/about_image.png"; 
 
 const AboutSection = () => {
   return (
-    <section id="about" className="relative w-full py-15 scroll-mt-24 px-4 md:px-6 lg:px-8" style={{ backgroundColor: "#fde2e2" }}>
-      <div
-        className="w-full mx-auto rounded-[40px] overflow-hidden shadow-xl"
-        style={{ border: "3px solid black", backgroundColor: "#fffaf0" }}
-      >
+    <section id="about" className="relative w-full py-15 scroll-mt-24 px-4 md:px-6 lg:px-8">
         <div className="w-full max-w-7xl mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
@@ -97,16 +91,10 @@ const AboutSection = () => {
                     <p className="text-gray-600 text-xs sm:text-sm">Happy Customers</p>
                   </div>
                 </div>
-
-                <Button className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  Start Your First Delivery
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                </Button>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

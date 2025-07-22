@@ -39,12 +39,16 @@ const Header = () => {
             ? "bg-white/20 backdrop-blur-xl shadow-2xl border-b border-white/30"
             : "border-b border-transparent"
         }`}
-        style={isScrolled ? {
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-        } : {
-          backgroundColor: '#fca5a5'
-        }}
+        style={
+          isScrolled
+            ? {
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+              }
+            : {
+                backgroundColor: "#ef4444",
+              }
+        }
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div
@@ -59,8 +63,8 @@ const Header = () => {
                   isScrolled ? "w-8 h-8" : "w-9 h-9 sm:w-10 sm:h-10"
                 }`}
                 style={{
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
                 }}
               >
                 <Truck
@@ -88,8 +92,8 @@ const Header = () => {
                     isScrolled ? "text-sm" : "text-base"
                   }`}
                   style={{
-                    backdropFilter: 'blur(10px)',
-                    WebkitBackdropFilter: 'blur(10px)',
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
                   }}
                 >
                   {item.name}
@@ -101,14 +105,14 @@ const Header = () => {
             {/* Desktop CTA Button */}
             <div className="hidden md:flex items-center space-x-4">
               <Button
-                className={`bg-gradient-to-r from-orange-500/90 to-pink-500/90 hover:from-orange-600/90 hover:to-pink-600/90 text-white font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-0.5 border border-white/30 backdrop-blur-sm ${
+                className={`bg-white text-black font-semibold shadow-2xl transition-all duration-300 border border-white/30 backdrop-blur-sm hover:shadow-3xl hover:-translate-y-0.5 hover:border-gray-500 hover:bg-gradient-to-r hover:from-white hover:to-gray-200 ${
                   isScrolled
                     ? "px-4 py-2 text-sm rounded-xl"
                     : "px-6 py-2.5 text-base rounded-xl"
                 }`}
                 style={{
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
                 }}
               >
                 Contact Us
@@ -121,8 +125,8 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
               style={{
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
               }}
             >
               {isMobileMenuOpen ? (
@@ -148,8 +152,8 @@ const Header = () => {
           className="absolute inset-0 bg-black/30 backdrop-blur-md"
           onClick={() => setIsMobileMenuOpen(false)}
           style={{
-            backdropFilter: 'blur(15px)',
-            WebkitBackdropFilter: 'blur(15px)',
+            backdropFilter: "blur(15px)",
+            WebkitBackdropFilter: "blur(15px)",
           }}
         ></div>
 
@@ -159,19 +163,19 @@ const Header = () => {
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
           style={{
-            backdropFilter: 'blur(25px)',
-            WebkitBackdropFilter: 'blur(25px)',
+            backdropFilter: "blur(25px)",
+            WebkitBackdropFilter: "blur(25px)",
           }}
         >
           <div className="flex flex-col h-full">
             {/* Mobile Menu Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/30">
               <div className="flex items-center space-x-3">
-                <div 
+                <div
                   className="w-8 h-8 bg-gradient-to-r from-orange-500/90 to-pink-500/90 rounded-lg flex items-center justify-center border border-white/20"
                   style={{
-                    backdropFilter: 'blur(10px)',
-                    WebkitBackdropFilter: 'blur(10px)',
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
                   }}
                 >
                   <Truck className="h-4 w-4 text-white" />
@@ -192,8 +196,8 @@ const Header = () => {
                       onClick={handleNavClick}
                       className="block px-4 py-3 text-lg font-medium text-gray-800 hover:text-gray-900 hover:bg-white/30 rounded-xl transition-all duration-200 backdrop-blur-sm border border-transparent hover:border-white/40"
                       style={{
-                        backdropFilter: 'blur(10px)',
-                        WebkitBackdropFilter: 'blur(10px)',
+                        backdropFilter: "blur(10px)",
+                        WebkitBackdropFilter: "blur(10px)",
                       }}
                     >
                       {item.name}
@@ -209,8 +213,8 @@ const Header = () => {
                 onClick={handleNavClick}
                 className="w-full bg-gradient-to-r from-orange-500/90 to-pink-500/90 hover:from-orange-600/90 hover:to-pink-600/90 text-white font-semibold py-3 px-6 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-white/30 backdrop-blur-sm"
                 style={{
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
                 }}
               >
                 Contact Us
@@ -219,8 +223,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-
-
     </>
   );
 };

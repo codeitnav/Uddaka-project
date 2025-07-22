@@ -3,7 +3,7 @@
 
 @layer base {
   :root {
-    --background: 0 100% 92.5%; /* #fde2e2 */
+    --background: 0 0% 100%;
     --foreground: 26 20% 10%;
 
     /* New Gradient Colors */

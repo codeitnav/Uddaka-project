@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import Image from "next/image";
+import contact_bg from "@/assets/contact_image.png";
 
 interface FAQItem {
   question: string;
@@ -46,8 +48,17 @@ const FAQSection: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center py-24 px-4" style={{ backgroundColor: "#fde2e2" }}>
-      <div className="max-w-4xl mx-auto">
+    <section className="min-h-screen flex items-center py-24 px-4">
+      {/* Left background image */}
+      <div className="absolute left-0 top-0 w-1/2 h-full opacity-80 z-0">
+        <Image
+          src={contact_bg} 
+          alt="Decorative background"
+          fill
+          className="object-cover object-left"
+        />
+      </div>
+      <div className="max-w-4xl mx-auto z-50">
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-sm font-medium text-purple-700 mb-4">
             ❓ FAQ

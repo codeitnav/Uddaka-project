@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Phone, Mail, Twitter, Linkedin, Instagram } from "lucide-react";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <section id="footer" style={{ backgroundColor: "#fde2e2" }}>
+    <section id="footer">
       <footer className="bg-gray-900 text-white rounded-t-[50px] mx-2 sm:mx-4 lg:mx-8">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -67,19 +68,31 @@ const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold mb-4">Policies</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                  <Link
+                    href="/privacy-policy"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/refund-policy" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                  <Link
+                    href="/refund-policy"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  >
                     Refund Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/terms-conditions" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                  <Link
+                    href="/terms-conditions"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  >
                     Terms and Conditions
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#about" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
@@ -124,7 +137,7 @@ const Footer: React.FC = () => {
                   <div>
                     <p className="text-gray-400 text-sm font-medium">Address:</p>
                     <p className="text-gray-400 text-sm">
-                      Uddaka Technologies, Aakash Vihar, Near SRM University, Modinagar, Ghaziabad(U.P.)-201204
+                      Uddaka Technologies, Modinagar, Ghaziabad(U.P.)-201204
                     </p>
                   </div>
                 </div>

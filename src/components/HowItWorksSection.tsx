@@ -42,10 +42,9 @@ const HowItWorksSection: React.FC = () => {
     <section
       id="how-it-works"
       className="relative w-full py-15 scroll-mt-24 px-4 md:px-6 lg:px-8"
-      style={{ backgroundColor: "#fde2e2" }}
     >
       <div
-        className="w-full mx-auto rounded-[40px] overflow-hidden shadow-xl"
+        className="w-full mx-auto rounded-[40px] overflow-hidden shadow-xl bg-[radial-gradient(ellipse_at_center,_#fde2e2_40%,_#ef4444_100%)]"
         style={{ border: "3px solid black", backgroundColor: "#fffaf0" }}
       >
         <div className="w-full max-w-7xl mx-auto px-4 py-8">
