@@ -33,10 +33,9 @@ const Index = () => {
       <ScrollReveal direction="up" delay={100} duration={800}>
         <FAQSection />
       </ScrollReveal>
-
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default Index

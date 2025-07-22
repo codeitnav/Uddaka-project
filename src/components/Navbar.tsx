@@ -1,230 +1,278 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Truck } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { useMemo } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/assets/logo.png";
 
-const Header = () => {
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOverFooter, setIsOverFooter] = useState(false);
 
-  // Handle scroll effect
+  const navItems: NavItem[] = useMemo(
+    () => [
+      { name: "Home", href: "#home" },
+      { name: "About", href: "#about" },
+      { name: "Our Services", href: "#services" },
+      { name: "Process", href: "#process" },
+    ],
+    []
+  );
+
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 20);
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Navigation items
-  const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Why Us", href: "#why-us" },
-  ];
+  useEffect(() => {
+    const handleActiveSection = () => {
+      const sections = navItems.map((item) => item.href.substring(1));
+      const scrollPosition = window.scrollY + 100;
 
-  // Close mobile menu when clicking on nav items
-  const handleNavClick = () => {
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleActiveSection);
+    return () => window.removeEventListener("scroll", handleActiveSection);
+  }, [navItems]);
+
+  useEffect(() => {
+    const handleFooterIntersection = () => {
+      const footer = document.getElementById("footer");
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const navbarHeight = 80; // Approximate navbar height
+
+        // Check if navbar is overlapping with footer (considering mobile screens)
+        const isOverlapping =
+          footerRect.top < navbarHeight && window.innerWidth < 1024;
+        setIsOverFooter(isOverlapping);
+      }
+    };
+
+    window.addEventListener("scroll", handleFooterIntersection);
+    window.addEventListener("resize", handleFooterIntersection);
+
+    return () => {
+      window.removeEventListener("scroll", handleFooterIntersection);
+      window.removeEventListener("resize", handleFooterIntersection);
+    };
+  }, []);
+
+  const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-          isScrolled
-            ? "bg-white/20 backdrop-blur-xl shadow-2xl border-b border-white/30"
-            : "border-b border-transparent"
+    <div className="fixed top-0 left-0 right-0 xl:left-52 xl:right-52 2xl:left-64 2xl:right-64 z-50 px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3">
+      <nav
+        className={`transition-all duration-700 ease-out rounded-xl sm:rounded-2xl ${
+          isOverFooter
+            ? "bg-[#FFFFFF]/95 backdrop-blur-3xl border border-gray-200/50 shadow-xl shadow-black/10 py-2"
+            : isScrolled
+            ? "bg-white/20 backdrop-blur-3xl border border-white/30 shadow-xl shadow-black/10 py-2" // Changed to white tone
+            : "bg-white/10 backdrop-blur-3xl border border-white/20 shadow-md shadow-black/5 py-2.5" // Changed to white tone
         }`}
-        style={
-          isScrolled
-            ? {
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-              }
-            : {
-                backgroundColor: "#ef4444",
-              }
-        }
+        style={{
+          backdropFilter: "blur(30px)",
+          WebkitBackdropFilter: "blur(30px)",
+        }}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-none px-2 sm:px-4 lg:px-6">
+          <div className="flex items-center justify-between h-full min-h-[3rem]">
+            {/* Left - Logo */}
+            <div className="flex-shrink-0">
+              <Link href="#home">
+                <Image
+                  src={logo}
+                  alt="XCENTIC Logo"
+                  width={150}
+                  height={40}
+                  className="object-contain h-10 cursor-pointer"
+                />
+              </Link>
+            </div>
+
+            {/* Center - Nav Items (Hidden on smaller screens) */}
+            <div className="hidden lg:flex items-center justify-center flex-1 mx-8">
+              <div className="flex items-center space-x-1 xl:space-x-2">
+                {navItems.map((item) => {
+                  const sectionId = item.href.substring(1);
+                  const isActive = activeSection === sectionId;
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => handleNavClick(item.href)}
+                      className={`relative px-3 xl:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full group whitespace-nowrap ${
+                        isActive
+                          ? isOverFooter
+                            ? "text-gray-900 bg-gray-900/10 shadow-md shadow-gray-900/10"
+                            : "text-gray-900 bg-white/25 shadow-md shadow-white/20"
+                          : isOverFooter
+                          ? "text-gray-700 hover:text-gray-900 hover:bg-gray-900/10 hover:shadow-sm hover:shadow-gray-900/10"
+                          : "text-gray-700 hover:text-gray-900 hover:bg-white/15 hover:shadow-sm hover:shadow-white/10"
+                      }`}
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                      <span
+                        className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 h-0.5 bg-gray-900 transition-all duration-300 rounded-full ${
+                          isActive ? "w-6" : "w-0 group-hover:w-6"
+                        }`}
+                      ></span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right - Contact + Mobile Menu */}
+            <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+              <button
+                onClick={() => handleNavClick("#contact")}
+                className={`relative overflow-hidden transition-all duration-300 rounded-full font-semibold border shadow-md hover:scale-105 ${
+                  isOverFooter
+                    ? "bg-gray-900/90 text-white hover:bg-gray-800/95 border-gray-700/40 shadow-gray-900/20"
+                    : "bg-gray-900/85 text-white hover:bg-gray-800/90 border-gray-700/30 shadow-gray-900/20"
+                } ${
+                  isScrolled
+                    ? "px-3 sm:px-4 py-1.5 text-xs sm:text-sm"
+                    : "px-3 sm:px-5 py-2 text-sm"
+                }`}
+                style={{
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                }}
+              >
+                <span className="relative z-10 whitespace-nowrap">
+                  Contact Us
+                </span>
+              </button>
+
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`lg:hidden p-2.5 sm:p-3 rounded-full transition-all duration-300 backdrop-blur border ${
+                  isOverFooter
+                    ? isMobileMenuOpen
+                      ? "bg-gray-900/15 text-gray-900 border-gray-300/40"
+                      : "bg-gray-900/10 text-gray-700 hover:text-gray-900 hover:bg-gray-900/15 border-gray-300/30"
+                    : isMobileMenuOpen
+                    ? "bg-white/25 text-gray-900 border-white/25"
+                    : "bg-white/10 text-gray-700 hover:text-gray-900 hover:bg-white/20 border-white/25"
+                }`}
+                style={{
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                }}
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-5 w-5 sm:h-6 sm:w-6 rotate-90 transition-transform duration-300" />
+                ) : (
+                  <Menu className="h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-300" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
           <div
-            className={`flex items-center justify-between transition-all duration-300 ease-in-out ${
-              isScrolled ? "py-3" : "py-4 sm:py-5"
+            className={`lg:hidden transition-all duration-500 overflow-hidden ${
+              isMobileMenuOpen
+                ? "max-h-96 opacity-100 mt-4"
+                : "max-h-0 opacity-0 mt-0"
             }`}
           >
-            {/* Logo */}
-            <div className="flex items-center space-x-3 z-50">
-              <div
-                className={`bg-gradient-to-r from-orange-500/90 to-pink-500/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 border border-white/20 ${
-                  isScrolled ? "w-8 h-8" : "w-9 h-9 sm:w-10 sm:h-10"
-                }`}
-                style={{
-                  backdropFilter: "blur(10px)",
-                  WebkitBackdropFilter: "blur(10px)",
-                }}
-              >
-                <Truck
-                  className={`text-white transition-all duration-300 ${
-                    isScrolled ? "h-4 w-4" : "h-5 w-5"
-                  }`}
-                />
-              </div>
-              <span
-                className={`font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent transition-all duration-300 ${
-                  isScrolled ? "text-xl" : "text-xl sm:text-2xl"
-                }`}
-              >
-                uddaka
-              </span>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
-              {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  className={`relative px-4 lg:px-5 py-2 text-gray-800 hover:text-gray-900 transition-all duration-300 font-medium group backdrop-blur-sm rounded-lg hover:bg-white/20 border border-transparent hover:border-white/30 ${
-                    isScrolled ? "text-sm" : "text-base"
-                  }`}
-                  style={{
-                    backdropFilter: "blur(10px)",
-                    WebkitBackdropFilter: "blur(10px)",
-                  }}
-                >
-                  {item.name}
-                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
-                </a>
-              ))}
-            </nav>
-
-            {/* Desktop CTA Button */}
-            <div className="hidden md:flex items-center space-x-4">
-              <Button
-                className={`bg-white text-black font-semibold shadow-2xl transition-all duration-300 border border-white/30 backdrop-blur-sm hover:shadow-3xl hover:-translate-y-0.5 hover:border-gray-500 hover:bg-gradient-to-r hover:from-white hover:to-gray-200 ${
-                  isScrolled
-                    ? "px-4 py-2 text-sm rounded-xl"
-                    : "px-6 py-2.5 text-base rounded-xl"
-                }`}
-                style={{
-                  backdropFilter: "blur(10px)",
-                  WebkitBackdropFilter: "blur(10px)",
-                }}
-              >
-                Contact Us
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden z-50 p-2 rounded-lg hover:bg-white/20 transition-all duration-200 backdrop-blur-sm border border-white/20"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle mobile menu"
+            <div
+              className="px-4 sm:px-6 pt-5 pb-6 space-y-3 backdrop-blur-2xl rounded-xl border shadow-lg shadow-black/10"
               style={{
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
+                backdropFilter: "blur(25px)",
+                WebkitBackdropFilter: "blur(25px)",
+                backgroundColor: isOverFooter
+                  ? "rgba(255, 255, 255, 0.15)"
+                  : "rgba(255, 255, 255, 0.1)",
+                borderColor: isOverFooter
+                  ? "rgba(156, 163, 175, 0.3)"
+                  : "rgba(255, 255, 255, 0.25)",
               }}
             >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-gray-800" />
-              ) : (
-                <Menu className="h-6 w-6 text-gray-800" />
-              )}
-            </button>
-          </div>
-        </div>
-      </header>
+              {navItems.map((item, index) => {
+                const sectionId = item.href.substring(1);
+                const isActive = activeSection === sectionId;
 
-      {/* Mobile Menu Overlay */}
-      <div
-        className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen
-            ? "opacity-100 visibility-visible"
-            : "opacity-0 visibility-hidden"
-        }`}
-      >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-black/30 backdrop-blur-md"
-          onClick={() => setIsMobileMenuOpen(false)}
-          style={{
-            backdropFilter: "blur(15px)",
-            WebkitBackdropFilter: "blur(15px)",
-          }}
-        ></div>
-
-        {/* Mobile Menu Panel */}
-        <div
-          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-white/20 backdrop-blur-2xl shadow-2xl transform transition-transform duration-300 ease-in-out border-l border-white/30 ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-          style={{
-            backdropFilter: "blur(25px)",
-            WebkitBackdropFilter: "blur(25px)",
-          }}
-        >
-          <div className="flex flex-col h-full">
-            {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/30">
-              <div className="flex items-center space-x-3">
-                <div
-                  className="w-8 h-8 bg-gradient-to-r from-orange-500/90 to-pink-500/90 rounded-lg flex items-center justify-center border border-white/20"
-                  style={{
-                    backdropFilter: "blur(10px)",
-                    WebkitBackdropFilter: "blur(10px)",
-                  }}
-                >
-                  <Truck className="h-4 w-4 text-white" />
-                </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-                  uddaka
-                </span>
-              </div>
-            </div>
-
-            {/* Mobile Navigation */}
-            <nav className="flex-1 px-6 py-8">
-              <ul className="space-y-2">
-                {navItems.map((item, index) => (
-                  <li key={index}>
-                    <a
-                      href={item.href}
-                      onClick={handleNavClick}
-                      className="block px-4 py-3 text-lg font-medium text-gray-800 hover:text-gray-900 hover:bg-white/30 rounded-xl transition-all duration-200 backdrop-blur-sm border border-transparent hover:border-white/40"
-                      style={{
-                        backdropFilter: "blur(10px)",
-                        WebkitBackdropFilter: "blur(10px)",
-                      }}
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Mobile CTA */}
-            <div className="p-6 border-t border-white/30">
-              <Button
-                onClick={handleNavClick}
-                className="w-full bg-gradient-to-r from-orange-500/90 to-pink-500/90 hover:from-orange-600/90 hover:to-pink-600/90 text-white font-semibold py-3 px-6 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-white/30 backdrop-blur-sm"
-                style={{
-                  backdropFilter: "blur(10px)",
-                  WebkitBackdropFilter: "blur(10px)",
-                }}
-              >
-                Contact Us
-              </Button>
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => handleNavClick(item.href)}
+                    className={`block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg ${
+                      isActive
+                        ? isOverFooter
+                          ? "text-gray-900 bg-gray-900/15 shadow-md shadow-gray-900/10"
+                          : "text-gray-900 bg-white/30 shadow-md shadow-white/20"
+                        : isOverFooter
+                        ? "text-gray-700 hover:text-gray-900 hover:bg-gray-900/15 hover:shadow-sm hover:shadow-gray-900/10"
+                        : "text-gray-700 hover:text-gray-900 hover:bg-white/20 hover:shadow-sm hover:shadow-white/10"
+                    }`}
+                    style={{
+                      animationDelay: `${index * 40}ms`,
+                      animation: isMobileMenuOpen
+                        ? "slideInUp 0.4s ease-out forwards"
+                        : "none",
+                    }}
+                  >
+                    {item.name}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </nav>
+
+      <style jsx>{`
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 
-export default Header;
+export default Navbar;

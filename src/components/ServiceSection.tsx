@@ -51,7 +51,7 @@ const ServicesSection: React.FC = () => {
   ]
 
   return (
-    <section className="relative min-h-screen flex items-center py-24 px-4">
+    <section id="services" className="relative min-h-screen flex items-center py-24 px-4">
       {/* Background Image - Made smaller and positioned to the extreme right */}
       <div className="absolute right-0 top-0 w-1/2 h-full overflow-hidden opacity-80">
         <Image

@@ -1,46 +1,68 @@
-import React from 'react';
-import Image from 'next/image'; 
-import ScooterImage from '@/assets/ScooterImage.png'; 
-import Map from '@/assets/map-pin.svg'; 
+"use client"
+import Image from "next/image"
+import test from "@/assets/heroImg.png"
+import Play from "@/assets/playStore.png"
+import App from "@/assets/playStore.png" // Assuming this should be for App Store
 
-function Hero() {
+const HeroSection = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#ef4444] to-[#FFFFFF] font-['Poppins', 'Inter', 'sans-serif'] text-[#333]">
-      {/* Hero Content */}
-      <div className="relative flex flex-col md:flex-row items-center justify-center px-6 py-12 md:py-20 lg:px-20 mt-20">
-        {/* Left Section - Text and Buttons */}
-        <div className="flex-1 text-center md:text-left z-10 mb-12 md:mb-0 ml-16 md:mr-10 ">
-          <h1 className="text-4xl text-shadow-md sm:text-5xl lg:text-5xl font-bold leading-tight text-[#ffff] mb-4">
-            Delivering Speed &amp; Trust to Your Doorstep
+    <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden">
+      {/* Background div - absolute, full height of section, right half, rounded bottom-right */}
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-[#f59d9d] rounded-br-[250px]"></div>
+      {/* Main content wrapper - relative to section, centered, max-width, z-index to be above background */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between pt-8 pb-0 px-4 lg:px-8">
+        {/* Le  ft Section - Content */}
+        <div className="lg:w-1/2 text-center lg:text-left lg:pr-16">
+          {/* Top Tag */}
+          <div className="inline-flex items-center bg-red-300/30 w-80 rounded-full px-4 py-2 text-sm font-medium text-gray-700 mb-6">
+            {/* Keeping original SVG for specific path, but generally prefer Lucide */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 mr-2 text-red-500"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span className="text-red-500">Food Deliver Service & Restaurant</span>
+          </div>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-medium leading-tighter mb-6">
+            Fastest <br />
+            <span className="text-[#f06464] text-nowrap font-extrabold">Delivery &</span> <br />
+            <span className="text-nowrap font-medium">
+              Easy <span className="font-bold">Pickup</span>.
+            </span>
           </h1>
-          <p className="text-lg sm:text-xl  text-shadow-md  text-[#fff] mb-8 max-w-lg mx-auto md:mx-0">
-            Fast, reliable, and secure delivery at your fingertips
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-            <button className="px-8 py-3 hover:scale-[105%] cursor-pointer rounded-full bg-[#ce6d6d] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-              Start Your Delivery
-            </button>
-            <button className="px-8 py-3 rounded-full bg-transparent border border-[#ffff] text-[#ffff] font-semibold shadow-lg hover:shadow-xl hover:scale-[105%] cursor-pointer transition-all duration-300">
-              Track Your Order
-            </button>
+          {/* Download App Section */}
+          <p className="text-gray-700 text-lg mb-4 text-nowrap">For Better Service Download now</p>
+          <div className="flex flex-row justify-center lg:justify-start space-x-4">
+            <a href="#" className="inline-block">
+              <Image src={Play || "/placeholder.svg"} alt="Google Play" width={160} height={50} />
+            </a>
+            <a href="#" className="inline-block">
+              <Image src={App || "/placeholder.svg"} alt="App Store" width={150} height={50} />
+            </a>
           </div>
         </div>
-
-        {/* Right Section - 3D Illustration */}
-        <div className="flex-1 flex justify-center md:justify-end z-10">
-          {/* Using next/image component */}
-          <Image
-            src={ScooterImage}
-            alt="Delivery person on a scooter"
-            width={500} // Specify intrinsic width
-            height={400} // Specify intrinsic height
-            className="max-w-full h-auto rounded-lg rotate-2"
-            priority // Optional: prioritize loading for above-the-fold images
-          />
+        {/* Right Section - Image */}
+        {/* This div is now part of the flex layout. Use negative margin to pull it right. */}
+        <div className="lg:w-1/2 flex justify-center lg:justify-end relative mt-8 lg:mt-0 mb-0">
+          <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] xl:w-[750px] xl:h-[750px] -mr-16 lg:-mr-32">
+            <Image
+              src={test || "/placeholder.svg"}
+              alt="Delivery Person with Pizza"
+              fill // Use fill to make image fill its parent
+              className="object-contain object-bottom rounded-lg" // object-contain to fit, object-bottom to align bottom
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
 
-export default Hero;
+export default HeroSection
