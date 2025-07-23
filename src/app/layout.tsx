@@ -4,6 +4,12 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "@/app/globals.css"
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/800.css';
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{ fontFamily: 'Poppins, sans-serif' }}>
         {children}
         <ScrollToTopButton />
       </body>

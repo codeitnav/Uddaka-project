@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import Image from "next/image";
-import contact_bg from "@/assets/contact_image.png";
+import faq_bg from "@/assets/contact_image.png";
 
 interface FAQItem {
   question: string;
@@ -21,41 +21,46 @@ const FAQSection: React.FC = () => {
   };
 
   const faqData: FAQItem[] = [
-     {
-      question: "How fast can Uddaka deliver my package?",
-      answer: "We offer various delivery options ranging from 1-2 hours for express delivery to same-day delivery within 2-4 hours. Scheduled deliveries can be arranged for next-day or future dates based on your needs.",
+    {
+      question: "What is Uddaka?",
+      answer: "A logistics app connecting you to trusted local transport partners.",
     },
     {
-      question: "Which cities does Uddaka serve?",
-      answer: "Uddaka operates across 500+ cities in India, covering all major metropolitan areas and tier-2 cities. We're continuously expanding our network to reach more locations.",
+      question: "How do I book a delivery?",
+      answer: "Input pickup/drop details, choose a vehicle, and confirm.",
     },
     {
-      question: "How can I track my package?",
-      answer: "Once your order is confirmed, you'll receive a tracking link via SMS and email. You can also track your package in real-time through our mobile app or website using your order ID.",
+      question: "Are payments secure?",
+      answer: "Yes, payments use industry-standard encryption via our partners.",
     },
     {
-      question: "What if my package gets damaged or lost?",
-      answer: "All packages are insured and handled with care by our trained delivery partners. In the rare event of damage or loss, we provide full compensation based on the declared value of your package.",
+      question: "What if the driver-partner cancels?",
+      answer: "We'll auto-assign another driver or offer you a free cancellation.",
     },
     {
-      question: "Can I schedule deliveries for my business?",
-      answer: "Yes! We offer comprehensive business solutions including API integration, bulk scheduling, dedicated account managers, and special pricing for high-volume customers.",
+      question: "Can I schedule a delivery in advance?",
+      answer: "Yes, select 'Schedule for Later' and pick your date/time.",
     },
     {
-      question: "What are your delivery charges?",
-      answer: "Our pricing is distance and weight-based, starting from ₹49 for local deliveries. We offer transparent pricing with no hidden charges. Bulk customers and businesses get special discounted rates.",
+      question: "How do I become a driver-partner?",
+      answer:
+        "Tap 'Join as Driver' in the app or visit our website, upload documents, and await approval.",
+    },
+    {
+      question: "How can I reach support?",
+      answer: "Email: support@uddaka.com\nPhone: +91 93151 32367",
     },
   ];
 
   return (
-    <section className="min-h-screen flex items-center py-24 px-4">
+    <section className="min-h-screen flex items-center py-15 scroll-mt-24 px-4">
       {/* Left background image */}
-      <div className="absolute left-0 top-0 w-1/2 h-full opacity-80 z-0">
+      <div className="absolute left-0 top-0 w-1/2  h-full overflow-hidden opacity-80 hidden md:block">
         <Image
-          src={contact_bg} 
+          src={faq_bg}
           alt="Decorative background"
           fill
-          className="object-cover object-left"
+          className="object-contain object-left"
         />
       </div>
       <div className="max-w-4xl mx-auto z-50">
@@ -72,7 +77,10 @@ const FAQSection: React.FC = () => {
         </div>
         <div className="space-y-4">
           {faqData.map((item, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
+            <div
+              key={index}
+              className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden"
+            >
               <button
                 onClick={() => toggleItem(index)}
                 className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-orange-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-200"
@@ -89,12 +97,18 @@ const FAQSection: React.FC = () => {
                   )}
                 </div>
               </button>
-              <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                openItems.includes(index) ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-              }`}>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openItems.includes(index)
+                    ? "max-h-96 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 <div className="px-8 pb-6">
                   <div className="h-px bg-orange-200 mb-4"></div>
-                  <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+                  <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                    {item.answer}
+                  </p>
                 </div>
               </div>
             </div>

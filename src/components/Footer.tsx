@@ -78,15 +78,6 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    href="/refund-policy"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-                  >
-                    Refund Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href="/terms-conditions"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
@@ -117,19 +108,19 @@ const Footer: React.FC = () => {
                 <div className="flex items-center space-x-3">
                   <Phone className="h-4 w-4 text-gray-400" />
                   <a
-                    href="tel:+919634539981"
+                    href="tel:+919315132367"
                     className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                   >
-                    +91 9634539981
+                    +91 93151 32367
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-4 w-4 text-gray-400" />
                   <a
-                    href="mailto:business@uddaka.com"
+                    href="mailto:support@uddaka.com"
                     className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                   >
-                    business@uddaka.com
+                    support@uddaka.com
                   </a>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -137,7 +128,7 @@ const Footer: React.FC = () => {
                   <div>
                     <p className="text-gray-400 text-sm font-medium">Address:</p>
                     <p className="text-gray-400 text-sm">
-                      Uddaka Technologies, Modinagar, Ghaziabad(U.P.)-201204
+                      Uddaka, Ghaziabad(U.P.)-201204
                     </p>
                   </div>
                 </div>
@@ -148,7 +139,9 @@ const Footer: React.FC = () => {
           {/* Bottom Section */}
           <div className="border-t border-gray-800 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="text-gray-400 text-sm">© {currentYear} UDDAKA Technologies. All rights reserved.</div>
+              <div className="text-gray-400 text-sm">
+                © {currentYear} UDDAKA Technologies. All rights reserved.
+              </div>
 
               {/* Social Media Links */}
               <div className="flex space-x-4">

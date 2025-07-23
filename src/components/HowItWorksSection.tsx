@@ -1,101 +1,146 @@
-import React from "react";
-import { Package, Zap, MapPin, CheckCircle, ArrowRight } from "lucide-react";
+import React from 'react';
+import { 
+  UserPlus, 
+  MapPin, 
+  Users, 
+  Navigation, 
+  CreditCard, 
+  Star 
+} from 'lucide-react';
 
-interface StepProps {
-  step: string;
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
-const HowItWorksSection: React.FC = () => {
-  const steps: StepProps[] = [
+const HowItWorksSection = () => {
+  const steps = [
     {
-      step: "01",
-      title: "Place Your Order",
-      description:
-        "Book your delivery through our app, website, or API integration.",
-      icon: Package,
+      id: 1,
+      title: "Sign Up",
+      description: "Register with your mobile number and basic profile details.",
+      icon: <UserPlus className="w-6 h-6 sm:w-8 sm:h-8" />,
+      color: "from-red-500 to-red-600"
     },
     {
-      step: "02",
-      title: "Smart Matching",
-      description:
-        "Our AI matches your order with the best available delivery partner.",
-      icon: Zap,
+      id: 2,
+      title: "Book a Delivery",
+      description: "Enter pickup & drop locations, select vehicle and load type.",
+      icon: <MapPin className="w-6 h-6 sm:w-8 sm:h-8" />,
+      color: "from-red-400 to-red-500"
     },
     {
-      step: "03",
-      title: "Real-time Tracking",
-      description: "Track your package in real-time from pickup to delivery.",
-      icon: MapPin,
+      id: 3,
+      title: "Get Matched",
+      description: "We assign the nearest available driver-partner.",
+      icon: <Users className="w-6 h-6 sm:w-8 sm:h-8" />,
+      color: "from-red-600 to-red-700"
     },
     {
-      step: "04",
-      title: "Safe Delivery",
-      description: "Your package is delivered safely with proof of delivery.",
-      icon: CheckCircle,
+      id: 4,
+      title: "Real-Time Tracking",
+      description: "Monitor your consignment's live GPS location.",
+      icon: <Navigation className="w-6 h-6 sm:w-8 sm:h-8" />,
+      color: "from-red-500 to-red-600"
     },
+    {
+      id: 5,
+      title: "Secure Payment",
+      description: "Pay via UPI, wallet, or cash on delivery.",
+      icon: <CreditCard className="w-6 h-6 sm:w-8 sm:h-8" />,
+      color: "from-red-400 to-red-500"
+    },
+    {
+      id: 6,
+      title: "Rate & Review",
+      description: "Provide feedback to help us continually improve.",
+      icon: <Star className="w-6 h-6 sm:w-8 sm:h-8" />,
+      color: "from-red-600 to-red-700"
+    }
   ];
 
   return (
-    <section
-      id="process"
-      className="relative w-full py-15 scroll-mt-24 px-4 md:px-6 lg:px-8"
-    >
-      <div
-        className="w-full mx-auto rounded-[40px] overflow-hidden shadow-xl bg-[radial-gradient(ellipse_at_center,_#fde2e2_40%,_#ef4444_100%)]"
-        style={{ border: "3px solid black", backgroundColor: "#fffaf0" }}
-      >
-        <div className="w-full max-w-7xl mx-auto px-4 py-8">
-          {/* Header Section */}
-          <div className="text-center mb-12 space-y-4">
-            <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-sm font-medium text-blue-700 mb-3">
-              🔄 How It Works
-            </div>
-            <h2 className="text-3xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold tracking-tight text-gray-900 leading-tight mb-3">
-              Simple 4-Step Process
-            </h2>
-            <div className="h-1 w-20 bg-black mx-auto mb-4"></div>
-            <p className="text-sm sm:text-base lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Our streamlined process ensures your packages reach their
-              destination quickly and safely, every single time.
-            </p>
+    <section id='process' className="py-15 scroll-mt-24 px-4 bg-white">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-red-50 border border-red-100 rounded-full text-xs sm:text-sm font-semibold text-red-700 mb-4 sm:mb-6">
+            🔄 How It Works
           </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
+            Simple Steps to Get Started
+          </h2>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
+            Experience seamless delivery service in just a few easy steps
+          </p>
+        </div>
 
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {steps.map((step, index) => {
-              const IconComponent = step.icon;
-              return (
-                <div key={index} className="relative">
-                  <div className="bg-gradient-to-br from-gray-200 to-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center group hover:-translate-y-1 border border-gray-100 h-full flex flex-col min-h-[280px] lg:min-h-[320px]">
-                    <div className="text-4xl lg:text-6xl font-bold text-gray-400 mb-3 lg:mb-4 group-hover:text-gray-500 transition-colors">
-                      {step.step}
-                    </div>
-                    <div className="absolute top-3 lg:top-4 right-3 lg:right-4 p-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg text-white shadow-md">
-                      <IconComponent className="h-4 w-4 lg:h-5 lg:w-5" />
-                    </div>
-                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 lg:mb-4 px-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm lg:text-base text-gray-600 leading-relaxed flex-1 px-2">
-                      {step.description}
-                    </p>
-                  </div>
-
-                  {/* Arrow for larger screens */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                      <div className="p-2 bg-white rounded-full shadow-md border border-gray-200">
-                        <ArrowRight className="h-5 w-5 text-gray-400" />
-                      </div>
-                    </div>
-                  )}
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+          {steps.map((step, index) => (
+            <div 
+              key={step.id}
+              className="group relative bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2"
+            >
+              {/* Step Number */}
+              <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg shadow-lg">
+                {step.id}
+              </div>
+              
+              {/* Icon */}
+              <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-r ${step.color} text-white mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                {step.icon}
+              </div>
+              
+              {/* Content */}
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
+                {step.title}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                {step.description}
+              </p>
+              
+              {/* Connecting Lines - Desktop Only */}
+              {/* Horizontal line for lg screens (3 columns) */}
+              {index < steps.length - 1 && (index + 1) % 3 !== 0 && (
+                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-red-200 to-red-300 transform -translate-y-1/2">
+                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-red-400 rounded-full"></div>
                 </div>
-              );
-            })}
-          </div>
+              )}
+              
+              {/* Vertical lines for mobile/tablet */}
+              {index < steps.length - 1 && (
+                <div className="block sm:hidden absolute -bottom-3 left-1/2 w-0.5 h-6 bg-gradient-to-b from-red-200 to-red-300 transform -translate-x-1/2">
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-red-400 rounded-full"></div>
+                </div>
+              )}
+              
+              {/* Vertical lines for tablet (2 columns) - between rows */}
+              {index < steps.length - 2 && index % 2 === 1 && (
+                <div className="hidden sm:block lg:hidden absolute -bottom-4 left-1/2 w-0.5 h-8 bg-gradient-to-b from-red-200 to-red-300 transform -translate-x-1/2">
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-red-400 rounded-full"></div>
+                </div>
+              )}
+              
+              {/* Horizontal line for tablet (2 columns) - within rows */}
+              {index < steps.length - 1 && index % 2 === 0 && (
+                <div className="hidden sm:block lg:hidden absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-red-200 to-red-300 transform -translate-y-1/2">
+                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-red-400 rounded-full"></div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center bg-gradient-to-r from-red-50 to-red-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-red-200 mx-2 sm:mx-0">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
+            Ready to Experience Seamless Delivery?
+          </h3>
+          <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto px-4">
+            Join thousands of satisfied customers who trust us with their delivery needs
+          </p>
+          <button className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-full hover:from-red-600 hover:to-red-700 transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base">
+            Get Started Now
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
