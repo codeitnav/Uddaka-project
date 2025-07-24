@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
               {/* Social Media Links */}
               <div className="flex space-x-4">
                 <a
-                  href="https://x.com/UddakaTech"
+                  href="https://x.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -126,7 +126,7 @@ const Footer: React.FC = () => {
                   <Twitter className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/uddaka-technologies"
+                  href="https://www.linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://www.instagram.com/uddaka_com/"
+                  href="https://www.instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
