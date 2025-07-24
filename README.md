@@ -58,9 +58,3 @@ Reliable logistics support for SMEs and enterprises.
 - Create a foundation for future feature additions such as online bookings or tracking portals  
 
 ---
-
-## 🧑‍💻 Developer Note
-
-This website was built as a freelance project with a strong emphasis on clarity, user experience, and scalability. All design and development were handled end-to-end, from branding alignment to frontend implementation.
-
----
