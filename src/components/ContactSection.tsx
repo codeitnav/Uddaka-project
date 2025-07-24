@@ -123,7 +123,7 @@ const ContactSection: React.FC = () => {
                   <Clock className="h-5 w-5 mr-3" /> 24/7 customer support
                 </li>
                 <li className="flex items-center">
-                  <Globe className="h-5 w-5 mr-3" /> 500+ cities coverage
+                  <Globe className="h-5 w-5 mr-3" /> 100+ cities coverage
                 </li>
               </ul>
             </div>

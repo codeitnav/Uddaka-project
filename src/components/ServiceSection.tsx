@@ -208,104 +208,189 @@ const ServicesSection: React.FC = () => {
           </div>
         </div>
 
-        {/* USP Section - Now Below Services */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-6 py-3 bg-red-50 border border-red-100 rounded-full text-sm font-semibold text-red-700 mb-6">
-              ⚡ Why Choose Us?
-            </div>
-            <h3 className="text-3xl lg:text-4xl font-800 text-gray-900 mb-4">
-              <span className="gradient-text">Lightning Fast</span> Delivery
-              Promise
-            </h3>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Experience our{" "}
-              <span className="text-red-600">industry-leading speed</span> with
-              guaranteed pickup and delivery times
-            </p>
-          </div>
-
-          <div className="flex flex-col lg:flex-row items-center justify-center space-y-8 lg:space-y-0 lg:space-x-12 px-4">
-            {/* USP 1 - Enhanced Design */}
-            <div className="relative w-full max-w-sm">
-              <div className="bg-white border-4 border-red-500 rounded-3xl p-8 text-center shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-white"></div>
-                <div className="relative z-10">
-                  <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-700 bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg">
-                    ⚡
-                  </div>
-                  <h4 className="text-4xl font-800 mb-2 gradient-text">
-                    10 MIN
-                  </h4>
-                  <p className="text-xl font-700 text-gray-800 mb-2">PICKUP</p>
-                  <p className="text-sm text-gray-600">
-                    <span>Lightning-fast</span> collection from your location
-                  </p>
-                </div>
+        {/* USP Section - Professional & Attractive Design */}
+        <div className="mb-16 relative">
+          <div className="relative z-10 px-6 py-16">
+            {/* Enhanced Header */}
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full text-sm font-bold shadow-lg shadow-red-500/25 mb-8 transform hover:scale-105 transition-all duration-300">
+                <span className="animate-pulse mr-2">⚡</span>
+                Why Choose Our Lightning Service?
               </div>
-
-              {/* Enhanced Arrow for Desktop */}
-              <div className="hidden lg:block absolute top-1/2 -right-8 transform -translate-y-1/2">
-                <div className="flex items-center">
-                  <div className="w-16 h-2 bg-gradient-to-r from-red-500 to-red-600 rounded-full"></div>
-                  <div className="w-4 h-4 bg-red-600 rounded-full ml-2 relative">
-                    <div className="w-0 h-0 border-l-4 border-l-red-600 border-t-2 border-t-transparent border-b-2 border-b-transparent absolute right-0 top-1/2 transform -translate-y-1/2"></div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Enhanced Arrow for Mobile */}
-              <div className="block lg:hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 rotate-90">
-                <div className="flex items-center">
-                  <div className="w-12 h-2 bg-gradient-to-r from-red-500 to-red-600 rounded-full"></div>
-                  <div className="w-3 h-3 bg-red-600 rounded-full ml-1"></div>
-                </div>
-              </div>
+              <h3 className="text-4xl lg:text-5xl font-900 text-gray-900 mb-6 leading-tight">
+                <span className="gradient-text">Unmatched Speed</span> &
+                Reliability
+              </h3>
+              <div className="w-24 h-1 bg-gradient-to-r from-red-500 to-red-600 mx-auto rounded-full mb-6"></div>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Experience our{" "}
+                <span className="text-red-600 font-bold">
+                  industry-leading speed
+                </span>{" "}
+                with guaranteed pickup and delivery times that set us apart from
+                the competition
+              </p>
             </div>
 
-            {/* Enhanced Truck Animation */}
-            <div className="flex items-center justify-center my-8 lg:my-0">
-              <div className="w-28 h-28 rounded-2xl border-4 border-red-500 flex items-center justify-center text-4xl transform scale-x-[-1] bg-gradient-to-br from-red-50 to-white shadow-xl">
-                🚚
+            {/* Professional Timeline Layout */}
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+                {/* Step 1 - Pickup */}
+                <div className="lg:col-span-2 relative group">
+                  <div className="bg-white rounded-2xl shadow-xl shadow-red-500/10 border border-red-100 p-8 relative overflow-hidden transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/20">
+                    {/* Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-red-50/50"></div>
+
+                    {/* Top Accent Line */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-red-600"></div>
+
+                    <div className="relative z-10">
+                      {/* Icon Container */}
+                      <div className="w-24 h-24 rounded-2xl mx-auto mb-6 flex items-center justify-center bg-gradient-to-br from-red-500 to-red-600 shadow-lg shadow-red-500/30 group-hover:shadow-xl group-hover:shadow-red-500/40 transition-all duration-300">
+                        <span className="text-4xl">⚡</span>
+                      </div>
+
+                      {/* Content */}
+                      <div className="text-center">
+                        <div className="inline-flex items-center px-4 py-2 bg-red-100 rounded-full mb-4">
+                          <span className="text-red-700 font-bold text-sm tracking-wider">
+                            STEP 1
+                          </span>
+                        </div>
+                        <h4 className="text-5xl font-900 mb-3 gradient-text">
+                          10
+                        </h4>
+                        <p className="text-lg font-bold text-gray-800 mb-2 tracking-wide">
+                          MINUTES
+                        </p>
+                        <p className="text-2xl font-800 text-gray-900 mb-3">
+                          Quick Pickup
+                        </p>
+                        <p className="text-gray-600 leading-relaxed">
+                          <span className="font-semibold text-red-600">
+                            Lightning-fast
+                          </span>{" "}
+                          collection directly from your doorstep
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Center - Process Flow */}
+                <div className="lg:col-span-1 flex flex-col items-center justify-center space-y-6 py-8">
+                  {/* Animated Truck */}
+                  <div className="relative">
+                    <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-3xl shadow-lg shadow-red-500/30 transform hover:scale-110 transition-all duration-300">
+                      <span className="animate-pulse scale-x-[-1] block">🚚</span>
+                    </div>
+
+                    {/* Animated Path Lines */}
+                    <div className="hidden lg:block absolute -left-16 top-1/2 transform -translate-y-1/2">
+                      <div className="flex items-center space-x-1">
+                        <div className="w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+                        <div className="w-2 h-0.5 bg-red-400"></div>
+                        <div className="w-2 h-0.5 bg-red-300"></div>
+                        <div className="w-2 h-0.5 bg-red-200"></div>
+                      </div>
+                    </div>
+
+                    <div className="hidden lg:block absolute -right-16 top-1/2 transform -translate-y-1/2">
+                      <div className="flex items-center space-x-1">
+                        <div className="w-2 h-0.5 bg-red-200"></div>
+                        <div className="w-2 h-0.5 bg-red-300"></div>
+                        <div className="w-2 h-0.5 bg-red-400"></div>
+                        <div className="w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Process Label */}
+                  <div className="text-center">
+                    <div className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-full text-sm font-bold">
+                      <span className="animate-pulse mr-2">🔄</span>
+                      In Transit
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 2 - Delivery */}
+                <div className="lg:col-span-2 relative group">
+                  <div className="bg-white rounded-2xl shadow-xl shadow-red-500/10 border border-red-100 p-8 relative overflow-hidden transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/20">
+                    {/* Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-red-50/50"></div>
+
+                    {/* Top Accent Line */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 to-red-700"></div>
+
+                    <div className="relative z-10">
+                      {/* Icon Container */}
+                      <div className="w-24 h-24 rounded-2xl mx-auto mb-6 flex items-center justify-center bg-gradient-to-br from-red-600 to-red-700 shadow-lg shadow-red-600/30 group-hover:shadow-xl group-hover:shadow-red-600/40 transition-all duration-300">
+                        <span className="text-4xl">🎯</span>
+                      </div>
+
+                      {/* Content */}
+                      <div className="text-center">
+                        <div className="inline-flex items-center px-4 py-2 bg-red-100 rounded-full mb-4">
+                          <span className="text-red-700 font-bold text-sm tracking-wider">
+                            STEP 2
+                          </span>
+                        </div>
+                        <h4 className="text-5xl font-900 mb-3 gradient-text">
+                          90
+                        </h4>
+                        <p className="text-lg font-bold text-gray-800 mb-2 tracking-wide">
+                          MINUTES
+                        </p>
+                        <p className="text-2xl font-800 text-gray-900 mb-3">
+                          Safe Delivery
+                        </p>
+                        <p className="text-gray-600 leading-relaxed">
+                          <span className="font-semibold text-red-600">
+                            Express guarantee
+                          </span>{" "}
+                          delivered right to the destination
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* USP 2 - Enhanced Design */}
-            <div className="relative w-full max-w-sm">
-              {/* Enhanced Arrow for Desktop */}
-              <div className="hidden lg:block absolute top-1/2 -left-8 transform -translate-y-1/2 z-20">
-                <div className="flex items-center">
-                  <div className="w-4 h-4 bg-red-600 rounded-full mr-2 relative">
-                    <div className="w-0 h-0 border-r-4 border-r-red-600 border-t-2 border-t-transparent border-b-2 border-b-transparent absolute left-0 top-1/2 transform -translate-y-1/2"></div>
-                  </div>
-                  <div className="w-16 h-2 bg-gradient-to-r from-red-600 to-red-500 rounded-full"></div>
+            {/* Enhanced Stats Section */}
+            <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center group">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 mx-auto mb-4 flex items-center justify-center shadow-lg shadow-red-500/30 group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-2xl">📊</span>
                 </div>
+                <h5 className="text-3xl font-900 gradient-text mb-2">99.8%</h5>
+                <p className="text-gray-600 font-semibold">On-Time Delivery</p>
               </div>
 
-              {/* Enhanced Arrow for Mobile */}
-              <div className="block lg:hidden absolute -top-6 left-1/2 transform -translate-x-1/2 rotate-90 z-20">
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-red-600 rounded-full mr-1"></div>
-                  <div className="w-12 h-2 bg-gradient-to-r from-red-600 to-red-500 rounded-full"></div>
+              <div className="text-center group">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 mx-auto mb-4 flex items-center justify-center shadow-lg shadow-red-500/30 group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-2xl">🛡️</span>
                 </div>
+                <h5 className="text-3xl font-900 gradient-text mb-2">100%</h5>
+                <p className="text-gray-600 font-semibold">Safe & Secure</p>
               </div>
 
-              <div className="bg-white border-4 border-red-500 rounded-3xl p-8 text-center shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden z-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-white"></div>
-                <div className="relative z-10">
-                  <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-700 bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg">
-                    🎯
-                  </div>
-                  <h4 className="text-4xl font-800 mb-2 gradient-text">
-                    90 MIN
-                  </h4>
-                  <p className="text-xl font-700 text-gray-800 mb-2">
-                    DELIVERY
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    <span>Express delivery</span> guarantee to destination
-                  </p>
+              <div className="text-center group">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 mx-auto mb-4 flex items-center justify-center shadow-lg shadow-red-500/30 group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-2xl">⭐</span>
                 </div>
+                <h5 className="text-3xl font-900 gradient-text mb-2">4.9/5</h5>
+                <p className="text-gray-600 font-semibold">Customer Rating</p>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="mt-16 text-center">
+              <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full font-bold shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/30 transform hover:scale-105 transition-all duration-300 cursor-pointer">
+                <span className="mr-2">🚀</span>
+                Experience Lightning Speed Today
+                <span className="ml-2">→</span>
               </div>
             </div>
           </div>

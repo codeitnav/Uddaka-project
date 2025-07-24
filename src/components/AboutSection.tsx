@@ -50,7 +50,7 @@ const AboutSection = () => {
               {[
                 {
                   title: "Fast Delivery:",
-                  desc: "Same-day and express delivery options to meet your urgent business needs across 500+ cities.",
+                  desc: "Same-day and express delivery options to meet your urgent business needs across 100+ cities.",
                 },
                 {
                   title: "Reliable Service:",
@@ -79,7 +79,7 @@ const AboutSection = () => {
                       <Truck className="h-4 w-4 sm:h-5 sm:w-5" />
                     </div>
                     <span className="text-xl sm:text-2xl font-bold text-gray-900">
-                      500+
+                      100+
                     </span>
                   </div>
                   <p className="text-gray-600 text-xs sm:text-sm">
@@ -92,7 +92,7 @@ const AboutSection = () => {
                       <Users className="h-4 w-4 sm:h-5 sm:w-5" />
                     </div>
                     <span className="text-xl sm:text-2xl font-bold text-gray-900">
-                      10K+
+                      1000+
                     </span>
                   </div>
                   <p className="text-gray-600 text-xs sm:text-sm">
