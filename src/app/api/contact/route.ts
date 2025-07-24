@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Email content for you (business owner)
+    // Email content for business owner
     const businessEmailContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #f97316;">New Contact Form Submission</h2>

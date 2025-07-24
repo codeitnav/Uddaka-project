@@ -80,8 +80,8 @@ const HeroSection = () => {
         {/* Left Section - Content */}
         <div className="lg:w-1/2 text-center lg:text-left lg:pr-16">
           {/* Top Tag */}
-          <div className="inline-flex items-center bg-red-300/30 w-80 rounded-full px-4 py-2 text-sm font-medium text-gray-700 mb-6">
-            {/* Keeping original SVG for specific path, but generally prefer Lucide */}
+          {/* Top Tag */}
+          <div className="inline-flex items-center bg-red-300/30 rounded-full px-4 py-2 text-sm font-medium text-gray-700 mb-6">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 mr-2 text-red-500"
@@ -94,7 +94,7 @@ const HeroSection = () => {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-red-500">One-Stop Delivery Solution</span>
+            <span className="text-black sm:text-red-500">All-in-One Shipping & Logistics Platform</span>
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-medium leading-tighter mb-6">

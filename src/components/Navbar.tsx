@@ -41,27 +41,52 @@ const Navbar = () => {
   useEffect(() => {
     const handleActiveSection = () => {
       const sections = navItems.map((item) => item.href.substring(1));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // If we're near the bottom of the page, activate the last section
+      if (scrollPosition + windowHeight >= documentHeight - 100) {
+        setActiveSection(sections[sections.length - 1]);
+        return;
+      }
 
-      for (const section of sections) {
+      let currentSection = sections[0]; // Default to first section
+
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
         const element = document.getElementById(section);
+        
         if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + scrollPosition;
+          
+          // Consider a section active if:
+          // 1. We've scrolled past its top minus offset
+          // 2. Or if it's currently visible in the viewport
           if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
+            scrollPosition >= elementTop - 200 || // 200px offset for better UX
+            (rect.top <= 200 && rect.bottom >= 200) // Element is visible in viewport
           ) {
-            setActiveSection(section);
-            break;
+            currentSection = section;
           }
         }
       }
+
+      setActiveSection(currentSection);
     };
 
+    // Add a small delay to ensure DOM is ready
+    const timeoutId = setTimeout(() => {
+      handleActiveSection();
+    }, 100);
+
     window.addEventListener("scroll", handleActiveSection);
-    return () => window.removeEventListener("scroll", handleActiveSection);
+    
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("scroll", handleActiveSection);
+    };
   }, [navItems]);
 
   useEffect(() => {
@@ -69,7 +94,7 @@ const Navbar = () => {
       const footer = document.getElementById("footer");
       if (footer) {
         const footerRect = footer.getBoundingClientRect();
-        const navbarHeight = 80; // Approximate navbar height
+        const navbarHeight = 80;
 
         // Check if navbar is overlapping with footer (considering mobile screens)
         const isOverlapping =
@@ -91,7 +116,14 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      // Update active section immediately when clicking
+      const sectionId = href.substring(1);
+      setActiveSection(sectionId);
+      
+      element.scrollIntoView({ 
+        behavior: "smooth",
+        block: "start" // Ensure we scroll to the top of the element
+      });
     }
   };
 
@@ -102,8 +134,8 @@ const Navbar = () => {
           isOverFooter
             ? "bg-[#FFFFFF]/95 backdrop-blur-3xl border border-gray-200/50 shadow-xl shadow-black/10 py-2"
             : isScrolled
-            ? "bg-white/20 backdrop-blur-3xl border border-white/30 shadow-xl shadow-black/10 py-2" // Changed to white tone
-            : "bg-white/10 backdrop-blur-3xl border border-white/20 shadow-md shadow-black/5 py-2.5" // Changed to white tone
+            ? "bg-white/20 backdrop-blur-3xl border border-white/30 shadow-xl shadow-black/10 py-2" 
+            : "bg-white/10 backdrop-blur-3xl border border-white/20 shadow-md shadow-black/5 py-2.5"
         }`}
         style={{
           backdropFilter: "blur(30px)",

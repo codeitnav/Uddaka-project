@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import Image from "next/image";
-import faq_bg from "@/assets/contact_image.png";
+import faq_bg from "@/assets/faqBg.png";
 
 interface FAQItem {
   question: string;
@@ -23,7 +23,8 @@ const FAQSection: React.FC = () => {
   const faqData: FAQItem[] = [
     {
       question: "What is Uddaka?",
-      answer: "A logistics app connecting you to trusted local transport partners.",
+      answer:
+        "A logistics app connecting you to trusted local transport partners.",
     },
     {
       question: "How do I book a delivery?",
@@ -31,11 +32,13 @@ const FAQSection: React.FC = () => {
     },
     {
       question: "Are payments secure?",
-      answer: "Yes, payments use industry-standard encryption via our partners.",
+      answer:
+        "Yes, payments use industry-standard encryption via our partners.",
     },
     {
       question: "What if the driver-partner cancels?",
-      answer: "We'll auto-assign another driver or offer you a free cancellation.",
+      answer:
+        "We'll auto-assign another driver or offer you a free cancellation.",
     },
     {
       question: "Can I schedule a delivery in advance?",
@@ -72,7 +75,8 @@ const FAQSection: React.FC = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-600">
-            Find answers to common questions about our delivery services and processes.
+            Find answers to common questions about our delivery services and
+            processes.
           </p>
         </div>
         <div className="space-y-4">

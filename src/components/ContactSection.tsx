@@ -105,7 +105,7 @@ const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Visit Us</p>
-                    <p className="text-gray-600">Mumbai, Maharashtra, India</p>
+                    <p className="text-gray-600">SK-III/6G-4, Indirapuram, Ghaziabad, (U.P.), India 201014</p>
                   </div>
                 </div>
               </div>
