@@ -214,8 +214,7 @@ const ServicesSection: React.FC = () => {
             {/* Enhanced Header */}
             <div className="text-center mb-20">
               <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full text-sm font-bold shadow-lg shadow-red-500/25 mb-8 transform hover:scale-105 transition-all duration-300">
-                <span className="animate-pulse mr-2">⚡</span>
-                Why Choose Our Lightning Service?
+                Why Choose Our Service?
               </div>
               <h3 className="text-4xl lg:text-5xl font-900 text-gray-900 mb-6 leading-tight">
                 <span className="gradient-text">Unmatched Speed</span> &
@@ -252,11 +251,6 @@ const ServicesSection: React.FC = () => {
 
                       {/* Content */}
                       <div className="text-center">
-                        <div className="inline-flex items-center px-4 py-2 bg-red-100 rounded-full mb-4">
-                          <span className="text-red-700 font-bold text-sm tracking-wider">
-                            STEP 1
-                          </span>
-                        </div>
                         <h4 className="text-5xl font-900 mb-3 gradient-text">
                           10
                         </h4>
@@ -331,11 +325,6 @@ const ServicesSection: React.FC = () => {
 
                       {/* Content */}
                       <div className="text-center">
-                        <div className="inline-flex items-center px-4 py-2 bg-red-100 rounded-full mb-4">
-                          <span className="text-red-700 font-bold text-sm tracking-wider">
-                            STEP 2
-                          </span>
-                        </div>
                         <h4 className="text-5xl font-900 mb-3 gradient-text">
                           90
                         </h4>
@@ -382,15 +371,6 @@ const ServicesSection: React.FC = () => {
                 </div>
                 <h5 className="text-3xl font-900 gradient-text mb-2">4.9/5</h5>
                 <p className="text-gray-600 font-semibold">Customer Rating</p>
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="mt-16 text-center">
-              <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full font-bold shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/30 transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                <span className="mr-2">🚀</span>
-                Experience Lightning Speed Today
-                <span className="ml-2">→</span>
               </div>
             </div>
           </div>
